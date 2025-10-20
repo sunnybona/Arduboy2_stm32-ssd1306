@@ -13,7 +13,6 @@
 //========================================
 //========== class Arduboy2Core ==========
 //========================================
-#ifndef STM32F103xB
 // Commands sent to the OLED display to initialize it
 const PROGMEM uint8_t Arduboy2Core::lcdBootProgram[] = {
   // boot defaults are commented out but left here in case they
@@ -70,7 +69,7 @@ const PROGMEM uint8_t Arduboy2Core::lcdBootProgram[] = {
   0xAF,
 
   // set display mode = horizontal addressing mode (0x00)
-  0x20, 0x00,
+  0x20, 0x02,
 
   // set col address range
   // 0x21, 0x00, COLUMN_ADDRESS_END,
@@ -78,11 +77,7 @@ const PROGMEM uint8_t Arduboy2Core::lcdBootProgram[] = {
   // set page address range
   // 0x22, 0x00, PAGE_ADDRESS_END
 };
-#else
-const PROGMEM uint8_t Arduboy2Core::lcdBootProgram[] = {
-  LCDBOOTPROGRAMARR
-};
-#endif /* STM32F103xB */
+
 
 void Arduboy2Core::boot()
 {
